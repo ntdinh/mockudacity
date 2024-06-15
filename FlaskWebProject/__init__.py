@@ -13,7 +13,8 @@ app.config.from_object(Config)
 # TODO: Add any logging levels and handlers with app.logger
 app.logger.setLevel(logging.CRITICAL)
 streamHandler=logging.StreamHandler()
-streamHandler.setLevel(logging.CRITICAL)
+streamHandler.setLevel(logging.ERROR)
+app.logger.addHandler(streamHandler)
 app.logger.addHandler(streamHandler)
 app.logger.info('test log success DinhNT11')
 
