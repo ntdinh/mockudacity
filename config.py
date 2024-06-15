@@ -6,7 +6,7 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret-key'
 
-    BLOB_ACCOUNT = os.environ.get('BLOB_ACCOUNT') or 'dinhnt11'
+    BLOB_ACCOUNT = os.environ.get('BLOB_ACCOUNT') or 'mockudacity'
     BLOB_STORAGE_KEY = os.environ.get('BLOB_STORAGE_KEY') or 'XLtPnwZhjep05YP3h8y6kwgJYVbTdTab2QWbbMnQHh08YbaABDh5DZCzBb5vo7DHzwWQGWUuEBcB+AStKCNkRw==' # TODO ?
     BLOB_CONTAINER = os.environ.get('BLOB_CONTAINER') or 'images'
 
