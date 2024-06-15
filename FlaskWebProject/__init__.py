@@ -11,12 +11,18 @@ from flask_session import Session
 app = Flask(__name__)
 app.config.from_object(Config)
 # TODO: Add any logging levels and handlers with app.logger
+app.logger.setLevel(logging.CRITICAL)
+streamHandler=logging.StreamHandler()
+streamHandler.setLevel(logging.CRITICAL)
+app.logger.addHandler(streamHandler)
+app.logger.info('test log success DinhNT11')
+
+
+
 Session(app)
 db = SQLAlchemy(app)
 login = LoginManager(app)
 login.login_view = 'login'
 
-app.logger.info('Invalid login attempt')
 
-app.logger.info('admin logged in successfully')
 import FlaskWebProject.views

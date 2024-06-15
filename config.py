@@ -7,13 +7,13 @@ class Config(object):
     SECRET_KEY = os.environ.get('SECRET_KEY') or 'secret-key'
 
     BLOB_ACCOUNT = os.environ.get('BLOB_ACCOUNT') or 'dinhnt11'
-    BLOB_STORAGE_KEY = os.environ.get('BLOB_STORAGE_KEY') or 'iL5HNZE204AM5vKTeEul/+xFf7tvDCJmrHhScY9GhY5NKH+At+uPpJ9R7l13+sYuZG7JDFxd81r++AStaNV+rg==' # TODO ?
+    BLOB_STORAGE_KEY = os.environ.get('BLOB_STORAGE_KEY') or 'XLtPnwZhjep05YP3h8y6kwgJYVbTdTab2QWbbMnQHh08YbaABDh5DZCzBb5vo7DHzwWQGWUuEBcB+AStKCNkRw==' # TODO ?
     BLOB_CONTAINER = os.environ.get('BLOB_CONTAINER') or 'images'
 
-    SQL_SERVER = os.environ.get('SQL_SERVER') or 'dinhnt11.database.windows.net'
-    SQL_DATABASE = os.environ.get('SQL_DATABASE') or 'dinhnt11'
+    SQL_SERVER = os.environ.get('SQL_SERVER') or 'mockudacitydinhnt11.database.windows.net'
+    SQL_DATABASE = os.environ.get('SQL_DATABASE') or 'mockudacitydbdinhnt11'
     SQL_USER_NAME = os.environ.get('SQL_USER_NAME') or 'dinhnt11'
-    SQL_PASSWORD = os.environ.get('SQL_PASSWORD') or 'dinhnt11@02071708'
+    SQL_PASSWORD = os.environ.get('SQL_PASSWORD') or 'mockudacityaA@'
     # Below URI may need some adjustments for driver version, based on your OS, if running locally
     SQLALCHEMY_DATABASE_URI = f'mssql+pyodbc://{SQL_USER_NAME}:{quote_plus(SQL_PASSWORD)}@{SQL_SERVER}:1433/{SQL_DATABASE}?driver=ODBC+Driver+17+for+SQL+Server'
     SQLALCHEMY_TRACK_MODIFICATIONS = False

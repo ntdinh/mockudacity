@@ -21,6 +21,8 @@ imageSourceUrl = 'https://'+ app.config['BLOB_ACCOUNT']  + '.blob.core.windows.n
 def home():
     user = User.query.filter_by(username=current_user.username).first_or_404()
     posts = Post.query.all()
+    app.logger.critical('test log 123')
+    print('fdfd')
     return render_template(
         'index.html',
         title='Home Page',
@@ -67,7 +69,10 @@ def login():
         user = User.query.filter_by(username=form.username.data).first()
         if user is None or not user.check_password(form.password.data):
             flash('Invalid username or password')
+            app.logger.critical('Invalid login attempt')
             return redirect(url_for('login'))
+        
+        app.logger.critical(f'admin logged in successfully')
         login_user(user, remember=form.remember_me.data)
         next_page = request.args.get('next')
         if not next_page or urlsplit(next_page).netloc != '': # or url_parse(next_page).netloc != '':
@@ -112,17 +117,32 @@ def logout():
 
 def _load_cache():
     # TODO: Load the cache from `msal`, if it exists
-    cache = None
+    cache = msal.SerializableTokenCache()
+    if session.get('token_cache'):
+        cache.deserialize(session['token_cache'])
     return cache
 
 def _save_cache(cache):
     # TODO: Save the cache, if it has changed
+    if cache.has_state_changed:
+        session['token_cache'] = cache.serialize()
     pass
 
 def _build_msal_app(cache=None, authority=None):
     # TODO: Return a ConfidentialClientApplication
+    return msal.ConfidentialClientApplication(
+        Config.CLIENT_ID,
+        authority=authority or Config.AUTHORITY,
+        client_credential=Config.CLIENT_SECRET,
+        token_cache=cache
+    )
     return None
 
 def _build_auth_url(authority=None, scopes=None, state=None):
     # TODO: Return the full Auth Request URL with appropriate Redirect URI
+    return _build_msal_app(authority=authority).get_authorization_request_url(
+        scopes or [],
+        state=state or str(uuid.uuid4()),
+        redirect_uri=url_for('authorized', _external=True, _scheme='https')
+    )
     return None
