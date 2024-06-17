@@ -14,9 +14,9 @@ App Service: Typically offers a more predictable pricing model based on the App 
 Scalability:
 VM: Can scale vertically (by resizing the VM) or horizontally (by adding more VMs), but manual configuration is required.
 App Service: Supports automatic scaling (both horizontal and vertical) based on demand without additional configuration. It’s easier to adjust the scale in response to traffic changes.
+
 ### Assess app changes that would change your decision.
 
-I chose App Services because:
-- Supports multiple languages and frameworks out-of-the-box, like .NET, Java, Node.js, Python, and PHP. Quick to start development without worrying about environment setup.
-- Can be cost-effective for workloads that need full control over resources and can be optimized by choosing specific VM sizes or using reserved instances.
-- Web applications, APIs, and mobile backends needing a quick deployment, easy management, and scalable platform with minimal operational overhead.
+- I will reconsider my decision when moving an application from an on-premises environment to the cloud.
+- When I need specific configurations, such as non-standard software or extensive network setups.
+- Additionally, when dealing with resource-demanding workloads like running complex databases or engaging in high-performance computing.
